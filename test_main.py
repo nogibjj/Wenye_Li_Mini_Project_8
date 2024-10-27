@@ -1,66 +1,32 @@
-"""
-Test goes here
-
-"""
-
 import subprocess
+import os
 
-
-def test_extract():
-    """tests extract()"""
+def test_performance_report():
+    """Tests the main script's execution and output."""
+    # Run the main script
     result = subprocess.run(
-        ["python", "main.py", "extract"],
+        ["python", "main.py"],
         capture_output=True,
         text=True,
         check=True,
     )
-    assert result.returncode == 0
-    assert "Extracting data..." in result.stdout
-
-
-def test_transform_load():
-    """tests transfrom_load"""
-    result = subprocess.run(
-        ["python", "main.py", "transform_load"],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    assert result.returncode == 0
-    assert "Transforming data..." in result.stdout
-
-
-def test_run_query():
-    """tests general_query"""
-    result = subprocess.run(
-        [
-            "python",
-            "main.py",
-            "run_query",
-            """
-            WITH AgeStats AS (
-            SELECT age,
-            AVG(alcohol_use) AS avg_alcohol_use,
-            AVG(marijuana_use) AS avg_marijuana_use
-            FROM DrugUseDB
-            GROUP BY age
-            )
-            SELECT d.age, d.n, d.alcohol_use, a.avg_alcohol_use, 
-            d.marijuana_use, a.avg_marijuana_use
-            FROM DrugUseDB d
-            JOIN AgeStats a
-            ON d.age = a.age
-            ORDER BY d.age ASC, d.n DESC
-            """,
-        ],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    assert result.returncode == 0
-
+    
+    # Check if the script executed successfully
+    assert result.returncode == 0, "Script failed to execute"
+    
+    # Check if the performance report file was created
+    assert os.path.exists("Python_Performance.md"), "Performance report file not created"
+    
+    # Read the performance report and check its contents
+    with open("Python_Performance.md", "r") as f:
+        report_content = f.read()
+        
+    # Check if the report contains essential sections
+    assert "Python Performance Report" in report_content
+    assert "Column Means" in report_content
+    assert "Performance Metrics" in report_content
+    assert "Operation" in report_content
+    assert "Time (s)" in report_content
 
 if __name__ == "__main__":
-    test_extract()
-    test_transform_load()
-    test_run_query()
+    test_performance_report()

@@ -1,4 +1,4 @@
-name: CI/CD
+name: Rust CI/CD Pipeline
 
 on:
   push:
@@ -26,22 +26,13 @@ jobs:
           override: true
 
       - name: Format
-        run: make format
+        run: make rust_format
 
       - name: Lint
-        run: make lint
+        run: make rust_lint
 
       - name: Test
-        run: make test
+        run: make rust_test
 
       - name: Check
-        run: make check
-
-      - name: Build
-        run: make build
-
-      - name: Upload Binary Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Rust Artificat Binary
-          path: target/release/drug_use_sqlite
+        run: make rust_check

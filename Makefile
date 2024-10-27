@@ -1,25 +1,39 @@
-all: format lint test check build run
-
-# Format code
-format:
+# Rust Makefile
+rust_format:
 	cargo fmt
 
-# Run clippy for linting
-lint:
+rust_lint:
 	cargo clippy
 
-# Run tests
-test:
+rust_test:
 	cargo test
 
-# Check if code compiles
-check:
+rust_check:
 	cargo check
 
-# Build release version
-build:
+rust_build:
 	cargo build --release
 
-# Run the program
-run:
+rust_run:
 	cargo run
+
+all: format lint test check build run
+
+# Python Makefile
+install:
+	pip install --upgrade pip &&\
+		pip install -r requirements.txt
+
+test:
+	python -m pytest -vv --cov=main test_*.py
+
+format:	
+	black *.py 
+
+lint:
+	ruff check *.py
+
+container-lint:
+	docker run --rm -i hadolint/hadolint < Dockerfile
+
+refactor: format lint
