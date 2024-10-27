@@ -1,5 +1,7 @@
 # Python Performance Report
 
+Total Execution Time: 0.201893 seconds
+
 ## Column Means
 
 - n: 3251.06
@@ -34,5 +36,6 @@
 
 | Operation | Time (s) | Memory (MB) |
 |-----------|----------|-------------|
-| Extract   | 0.103126 |        2.89 |
-| Calculate Means | 0.007565 |        0.72 |
+| Extract   | 0.191566 |        2.84 |
+| Calculate Means | 0.008319 |        0.72 |
+| Total      | 0.201893 |        3.56 |

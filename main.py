@@ -40,7 +40,6 @@ def calculate_means(file_path):
     start_time = time.perf_counter()
     start_memory = get_memory_usage()
 
-    # Read CSV
     df = pd.read_csv(file_path)
 
     # Calculate means for each numeric column
@@ -71,10 +70,10 @@ def calculate_means(file_path):
 
 
 def main():
-    # Initialize performance metrics list
+    total_start_time = time.perf_counter()
+    total_start_memory = get_memory_usage()
     performance_metrics = []
 
-    # Extract data
     url = (
         "https://raw.githubusercontent.com/fivethirtyeight/data/master/"
         "drug-use-by-age/drug-use-by-age.csv"
@@ -88,8 +87,14 @@ def main():
     means, calc_metrics = calculate_means(file_path)
     performance_metrics.append(calc_metrics)
 
+    # Calculate total time and memory
+    total_time = time.perf_counter() - total_start_time
+    total_memory = get_memory_usage() - total_start_memory
+
     # Create performance report
     report = "# Python Performance Report\n\n"
+    report += f"Total Execution Time: {total_time:.6f} seconds\n\n"
+
     report += "## Column Means\n\n"
     for column, mean in means.items():
         report += f"- {column}: {mean:.2f}\n"
@@ -107,12 +112,15 @@ def main():
             f"|\n"
         )
 
+    report += (
+        f"| Total      " f"| {total_time:>8.6f} " f"| {total_memory:>11.2f} " f"|\n"
+    )
+
     # Write report to file
     with open("Python_Performance.md", "w") as f:
         f.write(report)
 
     return performance_metrics
-
 
 # if __name__ == "__main__":
 #     main()

@@ -1,13 +1,15 @@
-[![CI/CD](https://github.com/nogibjj/Wenye_Li_Individual_Project_2/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Individual_Project_2/actions/workflows/cicd.yml)
+[![Rust CI/CD Pipeline](https://github.com/nogibjj/Wenye_Li_Mini_Project_8/actions/workflows/rust_cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_8/actions/workflows/rust_cicd.yml)
+[![Python CI/CD Pipeline](https://github.com/nogibjj/Wenye_Li_Mini_Project_8/actions/workflows/python_cicd.yml/badge.svg)](https://github.com/nogibjj/Wenye_Li_Mini_Project_8/actions/workflows/python_cicd.yml)
 
-## Wenye Li Individual Project 2
+## Wenye Li Mini Project 8
 
 ## Requirements
 
-- Rust source code: The code should comprehensively understand Rust's syntax and unique features.
-- Use of LLM: In your README, explain how you utilized an LLM in your coding process.
-- SQLite Database: Include a SQLite database and demonstrate CRUD (Create, Read, Update, Delete) operations.
-- Optimized Rust Binary: Include a process that generates an optimized Rust binary as a Gitlab Actions artifact that can be downloaded.
-- README.md: A file that clearly explains what the project does, its dependencies, how to run the program, and how Gitlab Copilot was used.
-- Github/Gitlab Actions: A workflow file that tests, builds, and lints your Rust code.
-- Video Demo: A YouTube link in README.md showing a clear, concise walkthrough and demonstration of your CLI binary.
+- Take an existing Python script for data processing
+- Rewrite it in Rust
+- Highlight improvements in speed and resource usage
+
+## Deliverables
+
+- Rust and Python scripts
+- Performance comparison report (PDF or markdown)
