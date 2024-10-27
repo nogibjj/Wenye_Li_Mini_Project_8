@@ -51,10 +51,9 @@ def calculate_means(file_path):
             if column in ["age"]:  # skip non-numeric columns
                 continue
             # Replace "-" with np.nan instead of pd.NA
-            means[column] = (
-                pd.to_numeric(df[column].replace("-", np.nan), errors="coerce")
-                .mean()
-            )
+            means[column] = pd.to_numeric(
+                df[column].replace("-", np.nan), errors="coerce"
+            ).mean()
         except ValueError as e:
             print(f"Error processing column {column}: {e}")
             continue
