@@ -1,5 +1,5 @@
 {
-    "name": "Rust and Python",
+    "name": "Rust",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
@@ -20,24 +20,18 @@
                     "**/target/**": true
                 },
                 "rust-analyzer.checkOnSave.command": "clippy",
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "python.linting.enabled": true,
-                "python.linting.pylintEnabled": true,
-                "python.formatting.provider": "black"
+                "python.defaultInterpreterPath": "/usr/bin/python3",
+                "python.testing.pytestEnabled": true
             },
             "extensions": [
                 "rust-lang.rust-analyzer",
                 "GitHub.copilot-nightly",
                 "GitHub.copilot-labs",
                 "ms-python.python",
-                "ms-python.vscode-pylance",
-                "ms-python.black-formatter",
-                "ms-python.pylint"
+                "ms-python.vscode-pylance"
             ]
         }
     },
 
-    "postCreateCommand": "python3 -m venv env && source env/bin/activate && pip install --upgrade pip && pip install -r requirements.txt && rustup component add clippy rustfmt && cargo build",
-    
     "remoteUser": "vscode"
 }
