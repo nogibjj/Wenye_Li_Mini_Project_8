@@ -40,14 +40,26 @@ This project implements a data processing tool in both Python and Rust to analyz
 - - Lint Rust codes: `make rust_lint`
 - Run tests for the Rust project: `make rust_test`
 
-## Execution Time
+### Execution Time
+
+| Operation       | Python (s) | Rust (s) | Improvement |
+| --------------- | ---------- | -------- | ----------- |
+| Extract         | 0.191566   | 0.166017 | 13.3%       |
+| Calculate Means | 0.008319   | 0.003032 | 63.6%       |
+| Total           | 0.201893   | 0.169109 | 16.2%       |
 
 - Python Total Time: 0.201893 seconds
 - Rust Total Time: 0.169109 seconds
 - Improvement: 16.2% faster in Rust
 - Most significant in mean calculation (63.6% faster)
 
-## Memory Usage:
+### Memory Usage
+
+| Operation       | Python (MB) | Rust (MB) |
+| --------------- | ----------- | --------- |
+| Extract         | 2.84        | 6.19      |
+| Calculate Means | 0.72        | 0.69      |
+| Total           | 3.56        | 6.88      |
 
 - Rust shows higher memory usage in this implementation
 - Possible reasons:
