@@ -1,0 +1,10 @@
+[package]
+name = "drug_use_sqlite"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rusqlite = "0.29.0"
+csv = "1.2.2"
+reqwest = { version = "0.11.18", features = ["blocking", "json"] }
+chrono = "0.4.26"
